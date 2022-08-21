@@ -13,7 +13,6 @@ RUN chmod +x /start.sh
 COPY /start-reload.sh /start-reload.sh
 RUN chmod +x /start-reload.sh
 
-WORKDIR /app/
 
 EXPOSE 80
 
@@ -26,8 +25,7 @@ RUN apt-get update \
     && pip install --no-cache-dir --upgrade pip \
     pip install --no-cache-dir -r app/requirements.txt
 
-COPY app .
-
+COPY app /app
 CMD ["/start.sh"]
 
 FROM production AS dev
